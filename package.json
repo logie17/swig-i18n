@@ -1,0 +1,24 @@
+{
+  "name": "swig-i18n",
+  "version": "0.0.1",
+  "description": "I18n tag for swig template engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github"
+  },
+  "dependencies": {
+    "swig": "1.1.x",
+    "underscore": "1.5.x"
+  },
+  "keywords": [
+    "swig",
+    "i18n",
+    "translation"
+  ],
+  "author": "Shutterstock",
+  "license": "GPL3"
+}
