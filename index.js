@@ -11,7 +11,7 @@ exports.init_tag = function (translations, next) {
   
   
   swig.setTag('i18n', function(str, line, parser, types) {
-    var generate_output_code = function (literal, token) {
+    var generate_output_code = function (is_literal, token) {
       var count = this.out.length;
       function checkDot(ctx, match) {
         var m = match.split('.'),
@@ -40,7 +40,7 @@ exports.init_tag = function (translations, next) {
           match = match.replace(/[\'\"]/g,'');
           match = 'translate_result = translate_result.replace(RegExp("' + match +'", "g")';
         } else { /* value */
-          if (literal) {
+          if (is_literal) {
               match = ',("' + match.replace(/[\'\"]/g,'') + '"));';
           } else {
               match = ',(' + checkDot('_ctx.', match) + ' ? ' + '_ctx.' + match + ' : ""));';
@@ -71,6 +71,5 @@ exports.init_tag = function (translations, next) {
     output += 'return translate_result;})();';
     return output;
   }, true, true);
-
 }
 
