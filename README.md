@@ -21,3 +21,15 @@ Swig i18n Tag
   <div>foo</div>
 ```
 
+This module also supports simple search and replacement:
+
+### Swig call
+```javascript
+  {% set foo = 'baz' %}
+  <div>{% i18n TAG __foo__:foo %}Default text with __foo__{% endi18n%}</div>
+```
+
+### Output
+```html
+   <div>Default text with baz</div>
+```
