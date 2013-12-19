@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github"
+    "url": "git@github.com:logie17/swig-i18n.git"
   },
   "dependencies": {
     "swig": "1.1.x",
