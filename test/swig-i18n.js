@@ -37,6 +37,18 @@ exports["basic usage find translation"] = function(test){
   test.done();
 };
 
+exports["basic usage find translation as a function"] = function(test){
+
+  this.swig_i18n.init_tag(function(){return { TAG_LOOKUP: { es: 'foo' } }});
+  var template = '{% i18n TAG_LOOKUP %}Default text{% endi18n%}'; 
+
+  var expected = this.swig.render(template, {locals:{i18n:{language: 'es'}}});
+
+  test.expect(1);
+  test.equal(expected, 'foo');
+  test.done();
+};
+
 exports["basic usage find translation when tag is not found"] = function(test){
 
   this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'foo' } });

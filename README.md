@@ -33,3 +33,11 @@ This module also supports simple search and replacement:
 ```html
    <div>Default text with baz</div>
 ```
+
+One could also setup the translation data structure to originate from a callback:
+
+```javascript
+swig_i18n.init_tag(function(){ 
+  return {TAG: { es: 'foo' } };
+});
+```
