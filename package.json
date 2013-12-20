@@ -1,7 +1,7 @@
 {
   "name": "swig-i18n",
   "version": "0.0.4",
-  "description": "I18n tag for swig template engine",
+  "description": "i18n tag for swig template engine",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,7 @@
     "underscore": "1.5.x"
   },
   "devDependencies": {
-    "nodeunit": "~0.8.2",
+    "nodeunit": "0.8.1",
     "swig": "1.1.x"
   },
   "keywords": [
