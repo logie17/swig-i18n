@@ -11,9 +11,11 @@
     "url": "git@github.com:logie17/swig-i18n.git"
   },
   "dependencies": {
-    "swig": "1.1.x",
-    "underscore": "1.5.x",
-    "nodeunit": "~0.8.2"
+    "underscore": "1.5.x"
+  },
+  "devDependencies": {
+    "nodeunit": "~0.8.2",
+    "swig": "1.1.x"
   },
   "keywords": [
     "swig",
