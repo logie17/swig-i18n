@@ -95,3 +95,40 @@ exports["string subsitution with context object"] = function(test){
   test.equal(expected, 'Spanish should be used');
   test.done();
 };
+
+exports["string subsitution with dynamic variable via set"] = function(test){
+
+  this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish __should_be_replaced__' } });
+  var template = '{% set tag_lookup = \'TAG_LOOKUP\' %}{% i18n tag_lookup __should_be_replaced__:"should be used" %}Default text __should_be_replaced__{% endi18n%}'; 
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      }
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, 'Spanish should be used');
+  test.done();
+};
+
+exports["string substitution via a dynamic variable passed from data structure"] = function(test){
+
+  this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish __should_be_replaced__' } });
+  var template = '{% i18n tag_lookup __should_be_replaced__:"should be used" %}Default text __should_be_replaced__{% endi18n%}'; 
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      },
+      tag_lookup: 'TAG_LOOKUP'
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, 'Spanish should be used');
+  test.done();
+};

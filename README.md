@@ -34,6 +34,18 @@ This module also supports simple search and replacement:
    <div>Default text with baz</div>
 ```
 
+### Swig call
+```javascript
+  {% set foo = 'baz' %}
+  {% set tag = 'TAG' %}
+  <div>{% i18n tag __foo__:foo %}Default text with __foo__{% endi18n%}</div>
+```
+
+### Output
+```html
+   <div>Default text with baz</div>
+```
+
 One could also setup the translation data structure to originate from a callback:
 
 ```javascript
