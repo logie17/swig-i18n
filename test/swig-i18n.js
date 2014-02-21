@@ -132,3 +132,26 @@ exports["string substitution via a dynamic variable passed from data structure"]
   test.equal(expected, 'Spanish should be used');
   test.done();
 };
+
+exports["i18n tag works inside macros!"] = function(test) {
+  this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish is found' } });
+  var template = [
+                  '{% macro translate_this(foo) %}', 
+                  '<div>{% i18n foo %}default-goodbye{% endi18n %}</div>',
+                  '{% endmacro %}',
+                  '{% set foo = translate_this("TAG_LOOKUP") %}',
+                  '{{ foo }}'
+                ].join('');
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      }
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, '&lt;div&gt;Spanish is found&lt;/div&gt;');
+  test.done();
+};
