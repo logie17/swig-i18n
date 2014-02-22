@@ -91,8 +91,18 @@ exports["string subsitution with context object"] = function(test){
     }
   });
 
-  test.expect(1);
+  test.expect(2);
   test.equal(expected, 'Spanish should be used');
+
+  template = '{% i18n TAG_LOOKUP __should_be_replaced__:should_be, __bar__:"test" %}Default text __should_be_replaced__ __bar__{% endi18n%}'; 
+
+  expected = this.swig.render(template,{
+    locals:{
+      i18n:{language: 'tr'},
+      should_be:"should be used"
+    }
+  });
+  test.equal(expected, 'Default text should be used test');
   test.done();
 };
 
@@ -155,3 +165,24 @@ exports["i18n tag works inside macros!"] = function(test) {
   test.equal(expected, '&lt;div&gt;Spanish is found&lt;/div&gt;');
   test.done();
 };
+
+/*exports["value subsitution on arrays"] = function(test) {
+  this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish is found __A__' } });
+  //var template = '{% i18n TAG_LOOKUP __A__: params["image_id[]"].length %}default{% endi18n %}';
+  var template = '{% i18n TAG_LOOKUP __A__: params["image_id[]"] %}default{% endi18n %}';
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      },
+      params: {
+        'image_id[]':[1,2,3]
+      }
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, 'Spanish is found 3');
+  test.done();
+};*/
