@@ -224,3 +224,49 @@ exports["value as hash lookup"] = function(test) {
   test.equal(expected, 'Spanish is found 2');
   test.done();
 };
+
+exports["bug to fix set variable"] = function(test) {
+  this.swig_i18n.init_tag({});
+  var template = [
+    '{% set photo_stats = 54321 %}',
+    '{% set stats_this_week = 54321 %}',
+    '{% set spanQty = ["<span class=\'qty\'>"," </span>"] %}',
+    '{% set statsTotal = spanQty|join(photo_stats) %}',
+    '{% set statsThisWeek = spanQty|join(stats_this_week) %}',
+    '{% i18n EXACTLY_PHOTOS __NUM__: statsTotal %}__NUM__ royalty-free stock images{% endi18n %}\\n',
+    '{% i18n NEW_PHOTOS __NUM__: statsThisWeek %}__NUM__ new stock images added this week{% endi18n %}'
+  ].join('');
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      }
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, '<span class=\'qty\'>54321 </span> royalty-free stock images\\n<span class=\'qty\'>54321 </span> new stock images added this week');
+  test.done();
+};
+
+exports["numbers as assignment"] = function(test) {
+  this.swig_i18n.init_tag({});
+  var template = [
+    '{% i18n EXACTLY_PHOTOS __NUM__: 54321 %}__NUM__ royalty-free stock images{% endi18n %}\\n',
+    '{% i18n NEW_PHOTOS __NUM__: 54321 %}__NUM__ new stock images added this week{% endi18n %}'
+  ].join('');
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      }
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, '54321 royalty-free stock images\\n54321 new stock images added this week');
+  test.done();
+};
+
