@@ -83,15 +83,15 @@ exports["string subsitution with context object"] = function(test){
   this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish __should_be_replaced__' } });
   var template = '{% i18n TAG_LOOKUP __should_be_replaced__:should_be %}Default text __should_be_replaced__{% endi18n%}'; 
 
-  //var expected = this.swig.render(template,{
-  //  locals:{
-  //    i18n:{language: 'es'},
-  //    should_be:"should be used"
-  //  }
-  //});
+  var expected = this.swig.render(template,{
+    locals:{
+      i18n:{language: 'es'},
+      should_be:"should be used"
+    }
+  });
 
-  test.expect(1);
-  //test.equal(expected, 'Spanish should be used');
+  test.expect(2);
+  test.equal(expected, 'Spanish should be used');
 
   template = '{% i18n TAG_LOOKUP __foo__:should_be, __bar__:"test" %}Default text __foo__ __bar__{% endi18n%}'; 
 
