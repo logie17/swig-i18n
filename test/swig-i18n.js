@@ -185,26 +185,6 @@ exports["value subsitution on arrays"] = function(test) {
   test.done();
 };
 
-exports["value with array index lookup"] = function(test) {
-  this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish is found __A__' } });
-  var template = '{% i18n TAG_LOOKUP __A__: params["image_id[]"][1] %}default{% endi18n %}';
-
-  var expected = this.swig.render(template, {
-    locals:{
-      i18n:{
-        language: 'es'
-      },
-      params: {
-        'image_id[]':[1,2,3]
-      }
-    }
-  });
-
-  test.expect(1);
-  test.equal(expected, 'Spanish is found 2');
-  test.done();
-};
-
 exports["value as hash lookup"] = function(test) {
   this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish is found __A__' } });
   var template = '{% i18n TAG_LOOKUP __A__: params.b.c %}default{% endi18n %}';
@@ -254,7 +234,7 @@ exports["numbers as assignment"] = function(test) {
   this.swig_i18n.init_tag({});
   var template = [
     '{% i18n EXACTLY_PHOTOS __NUM__: 54321 %}__NUM__ royalty-free stock images{% endi18n %}\\n',
-    '{% i18n NEW_PHOTOS __NUM__: 54321 %}__NUM__ new stock images added this week{% endi18n %}'
+    '{% i18n NEW_PHOTOS __NUM__: 54321.2 %}__NUM__ new stock images added this week{% endi18n %}'
   ].join('');
 
   var expected = this.swig.render(template, {
@@ -266,7 +246,27 @@ exports["numbers as assignment"] = function(test) {
   });
 
   test.expect(1);
-  test.equal(expected, '54321 royalty-free stock images\\n54321 new stock images added this week');
+  test.equal(expected, '54321 royalty-free stock images\\n54321.2 new stock images added this week');
+  test.done();
+};
+
+exports["value with array index lookup"] = function(test) {
+  this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish is found __A__' } });
+  var template = '{% i18n TAG_LOOKUP __A__: params["image_id[]"][1] %}default{% endi18n %}';
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      },
+      params: {
+        'image_id[]':[1,2,3]
+      }
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, 'Spanish is found 2');
   test.done();
 };
 
