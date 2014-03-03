@@ -233,8 +233,8 @@ exports["bug to fix set variable"] = function(test) {
 exports["numbers as assignment"] = function(test) {
   this.swig_i18n.init_tag({});
   var template = [
-    '{% i18n EXACTLY_PHOTOS __NUM__: 54321 %}__NUM__ royalty-free stock images{% endi18n %}\\n',
-    '{% i18n NEW_PHOTOS __NUM__: 54321.2 %}__NUM__ new stock images added this week{% endi18n %}'
+    '{% i18n EXACTLY_PHOTOS __NUM__: 54321+5,__NUM2__:221 %}__NUM__ royalty-free stock images{% endi18n %}\\n',
+    '{% i18n NEW_PHOTOS __NUM__: 54321.2- 1 %}__NUM__ new stock images added this week{% endi18n %}'
   ].join('');
 
   var expected = this.swig.render(template, {
@@ -246,7 +246,7 @@ exports["numbers as assignment"] = function(test) {
   });
 
   test.expect(1);
-  test.equal(expected, '54321 royalty-free stock images\\n54321.2 new stock images added this week');
+  test.equal(expected, '54326 royalty-free stock images\\n54320.2 new stock images added this week');
   test.done();
 };
 
