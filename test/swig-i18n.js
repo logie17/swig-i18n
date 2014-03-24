@@ -270,3 +270,18 @@ exports["value with array index lookup"] = function(test) {
   test.done();
 };
 
+exports["filters are totally possible"] = function(test) {
+  this.swig_i18n.init_tag({ TAG_LOOKUP: { es: 'Spanish is found __A__' } });
+  
+  var template = '{% set translation = "TAG_LOOKUP"|i18n("es", "default") %}{{ translation }}';
+  var expected = this.swig.render(template, {locals:'es'});
+  test.expect(2);
+
+  test.equal(expected,'Spanish is found __A__');
+
+  template = '{% set translation = "TAG_LOOKUP"|i18n("es", "default", {__A__:"foo"}) %}{{ translation }}';
+  expected = this.swig.render(template, {locals:'es'});
+
+  test.equal(expected,'Spanish is found foo');
+  test.done();
+};
