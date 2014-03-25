@@ -53,3 +53,9 @@ swig_i18n.init_tag(function(){
   return {TAG: { es: 'foo' } };
 });
 ```
+
+### Supports the i18n filter too
+
+```javascript
+  {% set translation = "TAG_LOOKUP"|i18n("es", "default", {__A__:"foo"}) %}{{ translation }}
+```  
