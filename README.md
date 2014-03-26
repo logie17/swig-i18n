@@ -17,20 +17,26 @@ their application:
 Once the  module has been initialize the following is now possible:
 
 ### Swig call
-```javascript
-  <div>{% i18n TAG %}Default text{% endi18n%}</div>
+```html
+  <div>
+    {% i18n TAG %}Default text{% endi18n%}
+  </div>
 ```
 
 ### Output
 ```html
-  <div>foo</div>
+  <div>
+    foo
+  </div>
 ```
 
 Or, if one chooses they can call this as a filter on a bit of text:
 
-```javascript
+```html
   {% set translation = "TAG_LOOKUP"|i18n("es", "default" %}
-  {{ translation }}
+  <div>
+    {{ translation }}
+  </div>
 ```  
 
 ## Other Notable Features
@@ -39,21 +45,27 @@ This module also supports simple search and replacement:
 
 ### Swig
 
-```javascript
+```html
   {% set foo = 'baz' %}
-  <div>{% i18n TAG __foo__:foo %}Default text with __foo__{% endi18n%}</div>
+  <div>
+    {% i18n TAG __foo__:foo %}Default text with __foo__{% endi18n%}
+  </div>
 ```
 
 ### Output
 ```html
-   <div>Default text with baz</div>
+   <div>
+    Default text with baz
+  </div>
 ```
 
 ### Swig
-```javascript
+```html
   {% set foo = 'baz' %}
   {% set tag = 'TAG' %}
-  <div>{% i18n tag __foo__:foo %}Default text with __foo__{% endi18n%}</div>
+  <div>
+    {% i18n tag __foo__:foo %}Default text with __foo__{% endi18n%}
+  </div>
 ```
 
 ### Output
