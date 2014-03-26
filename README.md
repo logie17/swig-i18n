@@ -76,7 +76,7 @@ This module also supports simple search and replacement:
 One could also setup the translation data structure to originate from a callback:
 
 ```javascript
-swig_i18n.init_tag(function(){ 
+swig_i18n.init(function(){ 
   return {TAG: { es: 'foo' } };
 });
 ```
