@@ -41,6 +41,8 @@ Or, if one chooses they can call this as a filter on a bit of text:
 
 ## Other Notable Features
 
+### Replacements
+
 This module also supports simple search and replacement:
 
 ### Swig
@@ -73,6 +75,8 @@ This module also supports simple search and replacement:
    <div>Default text with baz</div>
 ```
 
+### Callback lookups
+
 One could also setup the translation data structure to originate from a callback:
 
 ```javascript
@@ -80,6 +84,8 @@ swig_i18n.init(function(){
   return {TAG: { es: 'foo' } };
 });
 ```
+
+### Imperial Language Support
 
 The module also supports a feature called "imperial_language". The idea is that if
 a translation is required for a language that is set as the default imperial language
