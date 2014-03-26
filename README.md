@@ -1,8 +1,6 @@
 swig-i18n
 =========
 
-Swig i18n
-
 The swig i18n module is useful when one needs to have a set of translations that 
 specific for a locale. This module both supports tags and filters. 
 
