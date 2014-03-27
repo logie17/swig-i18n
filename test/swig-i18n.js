@@ -300,3 +300,28 @@ exports["imperial language mode"] = function(test){
   test.equal(expected, 'foo');
   test.done();
 };
+
+exports["string subsitution with undefined variable"] = function(test){
+
+  this.swig_i18n.init({ TAG_LOOKUP: { es: 'Hola __name__' } });
+  var template = '{% i18n GREET_NAME __name__:name %}Hello __name__{% endi18n%}'; 
+
+  var expected = this.swig.render(template,{
+    locals:{
+      i18n:{language: 'es'}
+    }
+  });
+
+  test.expect(2);
+  test.equal(expected, 'Hello ');
+
+  expected = this.swig.render(template,{
+    locals:{
+      i18n:{language: 'es'},
+			name: 'world'
+    }
+  });
+  test.equal(expected, 'Hello world');
+
+  test.done();
+};
