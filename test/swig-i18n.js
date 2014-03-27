@@ -318,7 +318,7 @@ exports["string subsitution with undefined variable"] = function(test){
   expected = this.swig.render(template,{
     locals:{
       i18n:{language: 'es'},
-			name: 'world'
+      name: 'world'
     }
   });
   test.equal(expected, 'Hello world');
