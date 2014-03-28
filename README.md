@@ -101,3 +101,4 @@ To enable this functionality the following needs to be done:
   swig_i18n.init({ TAG: { es: 'foo' } }, { imperial_language: 'es' });
 ```
 
+
