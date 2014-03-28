@@ -1,6 +1,10 @@
 swig-i18n
 =========
 
+[![NPM](https://nodei.co/npm/swig-i18n.png?downloads=true)](https://nodei.co/npm/swig-i18n/)
+
+=========
+
 The swig i18n module is useful when one needs to have a set of translations that 
 specific for a locale. This module both supports tags and filters. 
 
