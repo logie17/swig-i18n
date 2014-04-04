@@ -23,8 +23,8 @@ module.exports = function(grunt) {
         // Relaxing
         expr: true,
 
-        maxparams: 4,
-        maxdepth: 2,
+        maxparams: 6,
+        maxdepth: 5,
         maxstatements: 45, // Made this up
         maxcomplexity: 15, // Pulled from Steve McConnell
         maxlen: 160, // Two times 80 characters
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       }
     },
     nodeunit: {
-      all: ['tests/*.js']
+      all: ['test/*.js']
     }
   });
   grunt.loadNpmTasks('grunt-contrib-jshint');
