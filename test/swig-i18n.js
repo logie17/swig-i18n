@@ -265,8 +265,21 @@ exports["value with array index lookup"] = function(test) {
     }
   });
 
-  test.expect(1);
+  test.expect(2);
   test.equal(expected, 'Spanish is found 2');
+
+  template = '{% i18n TAG_LOOKUP "__A__": global.image_id %}default{% endi18n %}';
+  expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      },
+      global: {
+        'image_id':123
+      }
+    }
+  });
+  test.equal(expected, 'Spanish is found 123');
   test.done();
 };
 
