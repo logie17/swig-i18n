@@ -283,6 +283,25 @@ exports["value with array index lookup"] = function(test) {
   test.done();
 };
 
+exports["value with undef deep nested lookup up should use default"] = function(test) {
+  this.swig_i18n.init({ TAG_LOOKUP: { es: 'Spanish is found __A__' } });
+
+  var template = '{% i18n tag.does.not.exist %}default{% endi18n %}';
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      }
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, 'default');
+
+  test.done();
+};
+
 exports["filters are totally possible"] = function(test) {
   this.swig_i18n.init({ TAG_LOOKUP: { es: 'Spanish is found __A__' } });
   
