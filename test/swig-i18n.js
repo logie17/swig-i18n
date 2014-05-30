@@ -292,7 +292,8 @@ exports["value with undef deep nested lookup up should use default"] = function(
     locals:{
       i18n:{
         language: 'es'
-      }
+      },
+      tag:{}
     }
   });
 
