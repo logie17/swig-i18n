@@ -1,0 +1,20 @@
+#! /usr/bin/env node
+
+swigi18n = require('../lib/swig-i18n.js');
+fs = require('fs');
+swig = require('swig');
+
+var templateName = process.argv[2];
+
+if (!templateName) {
+    process.exit(1);
+}
+
+swigi18n.init({},{analyze:1});
+fs.exists(templateName, function(exists) {
+    if(exists){
+       swig.compileFile(templateName);
+       console.log(swigi18n.compiledData());
+    }
+});
+
