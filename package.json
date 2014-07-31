@@ -1,6 +1,6 @@
 {
   "name": "swig-i18n",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "i18n tag for swig template engine",
   "main": "index.js",
   "scripts": {
