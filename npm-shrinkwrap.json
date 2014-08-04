@@ -1,0 +1,11 @@
+{
+  "name": "swig-i18n",
+  "version": "0.1.5",
+  "dependencies": {
+    "underscore": {
+      "version": "1.6.0",
+      "from": "underscore@1.6.0",
+      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.6.0.tgz"
+    }
+  }
+}
