@@ -205,8 +205,33 @@ exports["value as hash lookup"] = function(test) {
   test.done();
 };
 
-exports["bug to fix set variable"] = function(test) {
-  this.swig_i18n.init({});
+exports["bug to fix set variable autoescape on"] = function(test) {
+  this.swig_i18n.init({},{ html_autoescape: true });
+  var template = [
+    '{% set photo_stats = 54321 %}',
+    '{% set stats_this_week = 54321 %}',
+    '{% set spanQty = ["<span class=\'qty\'>"," </span>"] %}',
+    '{% set statsTotal = spanQty|join(photo_stats) %}',
+    '{% set statsThisWeek = spanQty|join(stats_this_week) %}',
+    '{% i18n EXACTLY_PHOTOS __NUM__: statsTotal %}__NUM__ royalty-free stock images{% endi18n %}\\n',
+    '{% i18n NEW_PHOTOS __NUM__: statsThisWeek %}__NUM__ new stock images added this week{% endi18n %}'
+  ].join('');
+
+  var expected = this.swig.render(template, {
+    locals:{
+      i18n:{
+        language: 'es'
+      }
+    }
+  });
+
+  test.expect(1);
+  test.equal(expected, '&lt;span class=&#39;qty&#39;&gt;54321 &lt;/span&gt; royalty-free stock images\\n&lt;span class=&#39;qty&#39;&gt;54321 &lt;/span&gt; new stock images added this week');
+  test.done();
+};
+
+exports["bug to fix set variable autoescape off"] = function(test) {
+  this.swig_i18n.init({},{ html_autoescape: false });
   var template = [
     '{% set photo_stats = 54321 %}',
     '{% set stats_this_week = 54321 %}',
