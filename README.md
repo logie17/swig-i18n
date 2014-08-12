@@ -103,6 +103,27 @@ To enable this functionality the following needs to be done:
   swig_i18n.init({ TAG: { es: 'foo' } }, { imperial_language: 'es' });
 ```
 
+### Autoescape Replacements
+
+The module supports autoescaping any replacement text, by default this is
+turned *off*.
+
+```javascript
+  var swig_i18n = require('swig-i18n.js');
+  swig_i18n.init({ TAG: { es: 'foo' } }, {autoescape:'html'});
+
+```
+
+Within the tag if you have a search replace, the output of the
+replace value will now be HTML escaped.
+
+```html
+  {% set foo = '<span>data</span>' %}
+  <div>
+    {% i18n TAG __foo__:foo %}Default text with __foo__{% endi18n%}
+  </div>
+```
+
 License
 -------
 

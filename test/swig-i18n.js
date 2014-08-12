@@ -206,7 +206,7 @@ exports["value as hash lookup"] = function(test) {
 };
 
 exports["bug to fix set variable autoescape on"] = function(test) {
-  this.swig_i18n.init({},{ html_autoescape: true });
+  this.swig_i18n.init({},{ autoescape: 'html' });
   var template = [
     '{% set photo_stats = 54321 %}',
     '{% set stats_this_week = 54321 %}',
@@ -231,7 +231,7 @@ exports["bug to fix set variable autoescape on"] = function(test) {
 };
 
 exports["bug to fix set variable autoescape off"] = function(test) {
-  this.swig_i18n.init({},{ html_autoescape: false });
+  this.swig_i18n.init({},{autoescape:null});
   var template = [
     '{% set photo_stats = 54321 %}',
     '{% set stats_this_week = 54321 %}',
