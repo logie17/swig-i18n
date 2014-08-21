@@ -124,6 +124,21 @@ replace value will now be HTML escaped.
   </div>
 ```
 
+### Active Languages
+
+The module supports an "active_languages" option that allows your application to have 
+a partial set of translations without displaying a partially translated site. When this 
+option is set to an array of language codes only those languages will be translated regardless 
+of the presence of a translated string for a given tag. In these cases the defaultwill be used.
+
+```javascript
+  var swig_i18n = require('swig-i18n.js');
+  swig_i18n.init({ TAG: { en: 'foo', es: 'bar', ru: 'nope' } }, {
+    active_languages:['en','es']
+  });
+
+```
+
 License
 -------
 

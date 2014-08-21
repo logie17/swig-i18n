@@ -22,6 +22,7 @@ module.exports = function(grunt) {
 
         // Relaxing
         expr: true,
+        evil:true,
 
         maxparams: 6,
         maxdepth: 5,
