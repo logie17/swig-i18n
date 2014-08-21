@@ -133,7 +133,9 @@ of the presence of a translated string for a given tag. In these cases the defau
 
 ```javascript
   var swig_i18n = require('swig-i18n.js');
-  swig_i18n.init({ TAG: { en: 'foo', es: 'bar', ru: 'nope' } }, {active_languages:['en','es']});
+  swig_i18n.init({ TAG: { en: 'foo', es: 'bar', ru: 'nope' } }, {
+    active_languages:['en','es']
+  });
 
 ```
 
