@@ -386,7 +386,6 @@ exports["string subsitution with undefined variable"] = function(test){
 
 exports["active languages are respected"] = function(test) {
     this.swig_i18n.init({ TAG_LOOKUP: { es: 'foo', en: 'foo', ru:'nope' } }, { 
-        imperial_language: 'es', 
         active_languages: ['es', 'en']
     });
     var template = '{% i18n TAG_LOOKUP %}Default text is used{% endi18n%}'; 
