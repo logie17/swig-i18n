@@ -48,6 +48,18 @@ exports["basic usage find translation as a function"] = function(test){
   test.done();
 };
 
+exports["translation tags that start with numbers and end as strings (a numvar!)"] = function(test){
+
+  this.swig_i18n.init(function(){return { '123_TAG_LOOKUP': { es: 'foo' } }});
+  var template = '{% i18n 123_TAG_LOOKUP %}Default text{% endi18n%}'; 
+
+  var expected = this.swig.render(template, {locals:{i18n:{language: 'es'}}});
+
+  test.expect(1);
+  test.equal(expected, 'foo');
+  test.done();
+};
+
 exports["basic usage find translation when tag is not found"] = function(test){
 
   this.swig_i18n.init({ TAG_LOOKUP: { es: 'foo' } });
