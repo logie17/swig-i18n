@@ -37,7 +37,7 @@ Once the  module has been initialize the following is now possible:
 Or, if one chooses they can call this as a filter on a bit of text:
 
 ```html
-  {% set translation = "TAG_LOOKUP"|i18n("es", "default") %}
+  {% set translation = "TAG_LOOKUP"|i18n("es", "default", {__REPLACEMENT__: "foo"}) %}
   <div>
     {{ translation }}
   </div>
