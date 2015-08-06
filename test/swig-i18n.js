@@ -45,7 +45,7 @@ exports["basic usage find updated translation"] = function(test){
 
   test.equal(expected, 'foo');
 
-  this.swig_i18n.updateTranslations({ TAG_LOOKUP: { es: 'bar' } });
+  this.swig_i18n.setTranslations({ TAG_LOOKUP: { es: 'bar' } });
 
   var updated = this.swig.render(template, {locals:{i18n:{language: 'es'}}});
   test.expect(2);
